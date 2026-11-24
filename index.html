@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CPES N° 14 – App docente</title>
+<meta name="description" content="App del CPES N° 14 &quot;Pueblos Originarios&quot;: marcar entrada, avisar faltas, legajo, asistencia y avisos.">
+<!-- Vista previa al compartir el link (WhatsApp, mail): escudo, título y descripción -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="CPES N° 14 &quot;Pueblos Originarios&quot; – App docente">
+<meta property="og:description" content="Marcá tu entrada, avisá si vas a faltar y mirá tu legajo, asistencia y avisos.">
+<meta property="og:url" content="https://cpes14.github.io/app/">
+<meta property="og:image" content="https://cpes14.github.io/app/icono-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="theme-color" content="#2e6b6b">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icono-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CPES 14">
+<style>
+  html,body{margin:0;height:100%;background:#2e6b6b}
+  iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#f5f0e6}
+  #carga{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;font:600 16px system-ui,sans-serif}
+  #carga img{width:96px;height:96px;border-radius:50%;background:#fff}
+</style>
+</head>
+<body>
+<div id="carga"><img src="icono-192.png" alt="Escudo CPES N° 14"><div>CPES N° 14 "Pueblos Originarios"</div><div style="font-weight:400;opacity:.85">Abriendo la app…</div></div>
+<script>
+  // ⬇⬇ PEGAR ACÁ el link de la app (Implementar → la URL que termina en /exec)
+  const APP_URL = "https://script.google.com/macros/s/AKfycbycNqX12FJtnmxYNJIXyYAaHv3QFRNcTLgwDzzMJ6kcje5uehlf1BNs9bWJ05Mx6blA/exec";
+  // Pasa a la app lo que venga en el link (por ejemplo el código del QR: ?qr=...)
+  const f = document.createElement("iframe");
+  f.src = APP_URL + location.search;
+  f.allow = "camera; clipboard-write";
+  f.onload = () => document.getElementById("carga").remove();
+  document.body.appendChild(f);
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>
